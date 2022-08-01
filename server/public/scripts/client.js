@@ -1,8 +1,8 @@
 console.log('hello world');
 
-$(readyNow);
+$(document).ready(onReady);
 
-function readyNow() {
-
+function onReady() {
+    $(#addition-button).on('click')
     
 }
