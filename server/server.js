@@ -6,13 +6,18 @@ const PORT = process.env.port || 5000;
 const calculationsArray = [];
 
 //return calculation sums
-app.get('/calculations', (rep, res) => {
+app.get('/calc', (rep, res) => {
     res.send(calculationsArray);
 });
 
-app.post('/calculations', (req, res) => {
-const calculations = req.body;
-console.log(req.body);
+app.post('/calc', (req, res) => {
+let newCalc = req.body;
+console.log(typeof newCalc.numOne);
+
+let answer = mathymath(newCalc.numOne, newCalc.numTwo, newCalc.operator);
+    // newCalc.answer = answer; 
+    mathAnswer.push(answer);
+    res.sendStatus(200);
 });
 app.use(express.static('server/public'));
 app.use(express.urlencoded());
