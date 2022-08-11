@@ -1,5 +1,7 @@
 console.log('hello world');
 
+let operator = "";
+
 $(document).ready(onReady);
 
 function onReady() {
@@ -8,4 +10,5 @@ function onReady() {
     $('operatorButton').on('click', getOperator)
     $('#sumButton').on('click', sumButtonHandler);
 $('#clearButton').on('click', clearButtonHandler);
-}
+
+};
