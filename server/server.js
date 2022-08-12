@@ -12,11 +12,23 @@ app.get('/calc', (rep, res) => {
 
 app.post('/calc', (req, res) => {
 let newCalc = req.body;
-console.log(typeof newCalc.numOne);
+let answer = 0;
 
-let answer = mathymath(newCalc.numOne, newCalc.numTwo, newCalc.operator);
-    // newCalc.answer = answer; 
-    mathAnswer.push(answer);
+newCalc.numOne = number (newCalc.numOne)
+newCalc.numTwo = number (newCalc.numTwo)
+
+if (newCalc.operator === '+') {
+    answer = newCalc.numOne + newCalc.numTwo
+} else if (newCalc.operator ==='-') {
+    answer = newCalc.numOne - newCalc.numTwo
+} else if (newCalc.operator === '*') {
+    answer = newCalc.numOne * newCalc.numTwo 
+} else if (newCalc.operator === '/') {
+    answer = newCalc.numOne / newCalc.numTwo
+}
+
+    newCalc.answer = answer; 
+    calculationsArray.push(answer);
     res.sendStatus(200);
 });
 app.use(express.static('server/public'));

@@ -1,8 +1,10 @@
+
+
+$(document).ready(onReady);
+
 console.log('hello world');
 
 let operator = "";
-
-$(document).ready(onReady);
 
 function onReady() {
 
@@ -45,3 +47,4 @@ $.ajax({
 function clearButtonHandler() {
     $('input').val('');
 };
+
