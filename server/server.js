@@ -1,9 +1,12 @@
 //create server app
 const express = require('express');
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.port || 5001;
 
 const calculationsArray = [];
+
+app.use(express.static('server/public'));
+app.use(express.urlencoded());
 
 //return calculation sums
 app.get('/calc', (rep, res) => {
@@ -14,12 +17,12 @@ app.post('/calc', (req, res) => {
 let newCalc = req.body;
 let answer = 0;
 
-newCalc.numOne = number (newCalc.numOne)
-newCalc.numTwo = number (newCalc.numTwo)
+newCalc.numOne = Number(newCalc.numOne)
+newCalc.numTwo = Number(newCalc.numTwo)
 
 if (newCalc.operator === '+') {
     answer = newCalc.numOne + newCalc.numTwo
-} else if (newCalc.operator ==='-') {
+} else if (newCalc.operator === '-') {
     answer = newCalc.numOne - newCalc.numTwo
 } else if (newCalc.operator === '*') {
     answer = newCalc.numOne * newCalc.numTwo 
@@ -28,11 +31,10 @@ if (newCalc.operator === '+') {
 }
 
     newCalc.answer = answer; 
-    calculationsArray.push(answer);
+    calculationsArray.push(newCalc);
     res.sendStatus(200);
 });
-app.use(express.static('server/public'));
-app.use(express.urlencoded());
+
 
 
 
